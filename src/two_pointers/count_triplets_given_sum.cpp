@@ -9,24 +9,25 @@ public:
         int count = 0;
         while(i < arr.size() - 2){
             int left = i + 1;
-            int right = arr.size() - 1;
+            int right = left +1;
             int complement = target - arr[i];
             
-            while(left < right){
+            while(right < arr.size()){
                 if(arr[left] + arr[right] == complement){
                     count++;
                     int aux=1;
-                    while((arr[right] == arr[right -aux]) && (left) != (right -aux))
+                    while((arr[right] == arr[right + aux]) && arr.size() > (right + aux))
                     { 
                         count++;
                         aux++;
                     }
                     left++;
-                }else if((arr[left] + arr[right] > complement) ){
-                    right--;
+                    right=left +1;
+                }else if((arr[left] + arr[right] < complement) ){
+                    right++;
                 }else{
                     left++;
-                    right=arr.size() - 1;
+                    right=left +1;
                 }
             }
             i++;
